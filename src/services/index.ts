@@ -1,11 +1,11 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: 'http://localhost:8000/api'
+  baseURL: 'https://my-json-server.typicode.com/ecanquiz/vue-todo-pwa'
 });
 
 export const getTasks = async () => {
-  return await instance.get("https://my-json-server.typicode.com/ecanquiz/vue-todo-pwa/db");
+  return await instance.get("/tasks");
 }
 
 export const getTask = async <T>(taskId: T) => {
