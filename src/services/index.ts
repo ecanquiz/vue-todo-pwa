@@ -5,7 +5,7 @@ const instance = axios.create({
 });
 
 export const getTasks = async () => {
-  return await instance.get("/tasks");
+  return await instance.get("https://my-json-server.typicode.com/ecanquiz/vue-todo-pwa/db");
 }
 
 export const getTask = async <T>(taskId: T) => {
@@ -23,3 +23,4 @@ export const updateTask = async <T,U>(taskId: T, payload: U) => {
 export const removeTask = async <T>(taskId: T) => {  
   return instance.delete(`/tasks/${taskId}`);
 }
+
