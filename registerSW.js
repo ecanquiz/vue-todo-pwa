@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/vue-todo-pwa/sw.js', { scope: '/vue-todo-pwa/' })})}
