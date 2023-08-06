@@ -8,13 +8,9 @@ const router = createRouter({
       name: 'index',
       component: Index
     }, {
-      path: '/create',
-      name: 'create',
-      component: () => import('../views/CreateOrEdit.vue')
-    }, {
       path: '/edit/:id(\\d+)',      
       name: 'edit',
-      component: () => import('../views/CreateOrEdit.vue'),
+      component: () => import('../views/Edit.vue'),
       props: true
   }]
 })

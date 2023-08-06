@@ -10,17 +10,24 @@ const {
   isRenderable,
   pending,
   task,
-  
-  submit
+  router
 } = useCreateOrEdit(props)   
 </script>
 
 <template>
   <div class="container row col-md-6 mx-auto w-1/2">
+        <div  class="flex space-x-2">
+      <button
+        class="btn btn-primary mb-4"
+        @click="router.push({ path: '/' })"
+      >
+        See all tasks
+      </button>
+    </div>
     <h1 v-if="pending" class="text-2xl" align="center">Loading...</h1>
     <h1 v-else class="text-2xl" align="center">
       {{$props.id ? 'Editing' : 'Creating'}} Tast
     </h1>
-    <FormTask v-if="isRenderable" :task="task" @submit='submit' />
+    <FormTask v-if="isRenderable" :task="task" />
   </div>
 </template>
