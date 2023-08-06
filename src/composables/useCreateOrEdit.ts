@@ -25,27 +25,6 @@ export default (props: { readonly id?: string; }) => {
       .finally(() => pending.value = false)
   }
 
-  const submit = (payload: Task) => {
-    pending.value = true
-    if (props.id===undefined) {
-      Services.insertTask(payload)
-        .then(response => {
-          alert(response.data.message)
-          router.push({name: 'index'})
-        })
-        .catch(error => console.log(error))
-        .finally(() => pending.value = false)
-    } else {      
-      Services.updateTask(props.id, payload)
-        .then(response => {
-          alert(response.data.message)
-          router.push({name: 'index'})
-        })
-        .catch(error => console.log(error))
-        .finally(() => pending.value = false)
-    }
-  }
-
   onMounted(()=>{
     if (props.id)
       getTask();
@@ -55,7 +34,6 @@ export default (props: { readonly id?: string; }) => {
     isRenderable,
     pending,
     task,
-    
-    submit
+    router
   }
 }

@@ -5,17 +5,9 @@ type Props = {
   readonly task?: Record<string, any>;
   readonly onSubmit?: ((...args: any[]) => any);
 }
-type Ctx = {
-  emit: (event: "submit", ...args: any[]) => void;
-}
 
-export default (props: Props, ctx: Ctx) => {
-  const form = ref(props.task as Task)
-  const submit = () => ctx.emit('submit', form.value )
+export default (props: Props) => {
+  const form = ref(props.task as Task) 
 
-  return {
-    form,
-
-    submit
-  }
+  return { form }
 }
