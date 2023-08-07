@@ -8,7 +8,7 @@ export default defineConfig({
   base: '/vue-todo-pwa/',
   plugins: [
     vue(),
-    VitePWA({      
+    VitePWA({    
       manifest: { 
         icons: [{
           src: 'pwa-64x64.png',
@@ -29,7 +29,25 @@ export default defineConfig({
           type: 'image/png',
           purpose: 'maskable'
         }]
-      }
+      },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+        runtimeCaching: [
+          {
+            urlPattern: ({ url }) => {
+              return url.pathname.startsWith("/ecanquiz/vue-todo-pwa");
+            },
+            //urlPattern: /^https:\/.my-json-server\.typicode\.com/,
+            handler: "CacheFirst" as const,
+            options: {
+              cacheName: "api-cache",
+              cacheableResponse: {
+                statuses: [0, 200],
+              },
+            },
+          },
+        ],
+      },
     })
   ],
   resolve: {
