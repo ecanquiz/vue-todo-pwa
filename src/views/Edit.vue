@@ -26,7 +26,7 @@ const {
     </div>
     <h1 v-if="pending" class="text-2xl" align="center">Loading...</h1>
     <h1 v-else class="text-2xl" align="center">
-      {{$props.id ? 'Editing' : 'Creating'}} Tast
+      {{$props.id ? 'Editing' : 'Creating'}} Task
     </h1>
     <FormTask v-if="isRenderable" :task="task" />
   </div>
