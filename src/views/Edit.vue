@@ -15,7 +15,7 @@ const {
 </script>
 
 <template>
-  <div class="container row col-md-6 mx-auto w-1/2">
+  <div class="container row col-md-6 mx-auto w-full lg:w-1/2">
         <div  class="flex space-x-2">
       <button
         class="btn btn-primary mb-4"

@@ -14,7 +14,7 @@ const { form } = useFormTask(props)
       <input type="text" v-model="form.title">
     </div>
 
-   <div class="m-4">
+   <div class="m-2">
       <label>Description</label>
       <textarea v-model="form.description"></textarea>
     </div>
