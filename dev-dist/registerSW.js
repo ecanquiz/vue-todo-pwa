@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) navigator.serviceWorker.register('/vue-todo-pwa/dev-sw.js?dev-sw', { scope: '/vue-todo-pwa/', type: 'classic' })
