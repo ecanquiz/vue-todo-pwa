@@ -8,8 +8,17 @@ export default defineConfig({
   base: '/vue-todo-pwa/',
   plugins: [
     vue(),
-    VitePWA({    
+    VitePWA({
+      injectRegister: 'auto',
+      registerType: 'autoUpdate',
+      devOptions: {
+        enabled: true
+      },      
       manifest: { 
+        name: 'My Awesome PWA',
+        short_name: 'MyPWA',
+        description: 'My Awesome Progressive Web Apps',
+        theme_color: '#ffffff',
         icons: [{
           src: 'pwa-64x64.png',
           sizes: '64x64',
