@@ -20,7 +20,7 @@ const { form } = useFormTask(props)
     </div>
 
     <div class="m-4">
-      <label>Done</label>
+      <label class="mr-2">Done</label>
       <input type="checkbox" v-model="form.done"/>
     </div>
   </form>

@@ -41,15 +41,29 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
-        runtimeCaching: [
+        runtimeCaching: [       
+          {
+            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+            handler: 'CacheFirst' as const,
+            options: {
+              cacheName: 'google-fonts-cache',
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          },        
           {
             urlPattern: ({ url }) => {
               return url.pathname.startsWith("/ecanquiz/vue-todo-pwa");
             },
             //urlPattern: /^https:\/.my-json-server\.typicode\.com/,
-            handler: "CacheFirst" as const,
+            handler: "NetworkFirst" as const,
             options: {
               cacheName: "api-cache",
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365 // <== 365 days
+              },
               cacheableResponse: {
                 statuses: [0, 200],
               },
