@@ -11,9 +11,7 @@ export default defineConfig({
     VitePWA({
       injectRegister: 'auto',
       registerType: 'autoUpdate',
-      devOptions: {
-        enabled: true
-      },      
+      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],     
       manifest: { 
         name: 'My Awesome PWA',
         short_name: 'MyPWA',
@@ -58,6 +56,7 @@ export default defineConfig({
             },
             //urlPattern: /^https:\/.my-json-server\.typicode\.com/,
             handler: "NetworkFirst" as const,
+            method: 'GET',
             options: {
               cacheName: "api-cache",
               expiration: {
@@ -71,6 +70,9 @@ export default defineConfig({
           },
         ],
       },
+      devOptions: {
+        enabled: true
+      } 
     })
   ],
   resolve: {
