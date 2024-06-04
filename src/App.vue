@@ -22,7 +22,13 @@ const notifyMe = () => {
   // We check if the permissions have been granted before
   else if (Notification.permission === "granted") {
     // If it is correct, we launch a notification
-    const notification = new Notification("Hi, permissions have been granted before!");
+    if (import.meta.env.DEV) {
+      const notification = new Notification("Hi dev, permissions have been granted before!");
+    } else if (import.meta.env.PROD) {
+      navigator.serviceWorker.ready.then((registration) => {
+        registration.showNotification("Hi prod, permissions have been granted before!");
+      });
+    }
   }
 
   // If not, we ask permission for notification
@@ -30,7 +36,13 @@ const notifyMe = () => {
     Notification.requestPermission().then(function (permission) {
       // If the user grants us, we create the notification
       if (permission === "granted") {
-        const notification = new Notification("Hi, permissions are granted now!");
+        if (import.meta.env.DEV) {
+          const notification = new Notification("Hi dev, permissions are granted now!");
+        } else if (import.meta.env.PROD) {          
+          navigator.serviceWorker.ready.then((registration) => {
+            registration.showNotification("Hi prod, permissions are granted now!");
+          });          
+        }
       }
     });
   }
